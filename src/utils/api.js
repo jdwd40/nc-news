@@ -26,7 +26,13 @@ export const getArticleById = (article_id) => {
   });
 };
 
-export const getArticlesByTopic = () => {};
+export const getArticlesByTopic = (topic) => {
+  return newsApi.get(`/articles/?topic=${topic}`).then(({ data }) => {
+    const {articles } = data;
+    console.log(' from getArticle >>>> ',articles);
+    return articles;
+  })
+};
 
 export const checkTopicExists = (topic) => {
   getTopics().then((data) => {

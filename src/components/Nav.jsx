@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import React from 'react';
-import { getTopics } from './utils/api';
+import { getTopics } from '../utils/api';
+i
 
 const Nav = () => {
   const [topics, setTopics] = useState([]);
@@ -16,13 +17,16 @@ const Nav = () => {
     <nav className="Nav">
       {topics.map((topic) => {
         return (
-          <Link
-            className="topic-links"
-            key={topic.slug}
-            to={`/articles/${topic.slug}`}
-          >
-            {topic.slug}
-          </Link>
+          <main>
+            <Link
+              className="topic-links"
+              key={topic.slug}
+              to={`/articles/?topic=${topic.slug}`}
+            >
+              {topic.slug}
+            </Link>
+            
+          </main>
         );
       })}
     </nav>

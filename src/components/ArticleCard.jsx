@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getArticleById, getArticles } from './utils/api';
+import { getArticleById, getArticles } from '../utils/api';
 
 const ArticleCard = () => {
   const { article_id } = useParams();

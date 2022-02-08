@@ -1,26 +1,34 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { checkTopicExists, getArticles } from './utils/api';
+import { getArticlesByTopic, getArticles } from '../utils/api';
+import { useLocation } from 'react-router-dom';
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
-  const { topic } = useParams();
   // check topic exists else show all topics
-  //checkTopicExists(topic);
+  const search = useLocation().search;
+  const topic = new URLSearchParams(search).get('topic');
 
-  console.log(checkTopicExists(topic));
+  console.log(topic);
 
   useEffect(() => {
-    getArticles().then((articlesFromApi) => {
-      setArticles(articlesFromApi);
-    });
+    // if topic is not set thtn
+    if (topic === null) {
+      getArticles().then((articlesFromApi) => {
+        setArticles(articlesFromApi);
+      });
+    } else {
+      getArticlesByTopic(topic).then((selectedArticlesFromApi) => {
+        setArticles(selectedArticlesFromApi);
+      });
+    }
   }, []);
-  console.log(articles);
+  //console.log(articles);
 
   return (
     <main className="Articles">
-      <h2>All Articles</h2>
+      <h2>Articles</h2>
       <ul>
         {articles.map((article) => {
           //console.log(article);
