@@ -4,7 +4,6 @@ import Header from './components/Header';
 import Nav from './components/Nav';
 import ArticleCard from './components/ArticleCard';
 import Articles from './components/Articles';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

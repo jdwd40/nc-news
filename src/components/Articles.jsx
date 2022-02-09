@@ -6,42 +6,42 @@ import { useLocation } from 'react-router-dom';
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
-  // check topic exists else show all topics
   const search = useLocation().search;
-  const topic = new URLSearchParams(search).get('topic');
+  let topic = new URLSearchParams(search).get('topic');
 
   console.log(topic);
 
   useEffect(() => {
     // if topic is not set thtn
-    if (topic === null) {
+
+    if (topic === null || topic === 'All Items') {
       getArticles().then((articlesFromApi) => {
         setArticles(articlesFromApi);
+        console.log('got here');
       });
     } else {
       getArticlesByTopic(topic).then((selectedArticlesFromApi) => {
         setArticles(selectedArticlesFromApi);
       });
     }
-  }, []);
+  }, [topic]);
   //console.log(articles);
 
   return (
-    <main className="Articles">
-      <h2>Articles</h2>
+    <main className="articles-container">
+      <h2>{topic}</h2>
       <ul>
         {articles.map((article) => {
           //console.log(article);
           return (
-            <Link
-              className="article-links"
-              key={article.article_id}
-              to={`/articles/${article.article_id}`}
-            >
-              <li>
-                <h3>{article.title}</h3>
-              </li>
-            </Link>
+            <main className="article-links">
+              <Link
+                key={article.article_id}
+                to={`/articles/${article.article_id}`}
+              >
+                <li>{article.title}</li>
+              </Link>
+            </main>
           );
         })}
       </ul>

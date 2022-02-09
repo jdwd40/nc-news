@@ -28,20 +28,16 @@ export const getArticleById = (article_id) => {
 
 export const getArticlesByTopic = (topic) => {
   return newsApi.get(`/articles/?topic=${topic}`).then(({ data }) => {
-    const {articles } = data;
-    console.log(' from getArticle >>>> ',articles);
+    const { articles } = data;
+    console.log(' from getArticle >>>> ', articles);
     return articles;
-  })
+  });
 };
 
-export const checkTopicExists = (topic) => {
-  getTopics().then((data) => {
-    console.log('from checkTopics ', data);
-    data.forEach((apiTopic) => {
-      if (apiTopic === topic) {
-        return true;
-      }
-    });
+export const getCommentsById = (article_id) => {
+  return newsApi.get(`/articles/${article_id}/comments`).then(({ data }) => {
+    const { comments } = data;
+    console.log(' from comments >>>> ', comments);
+    return comments;
   });
-  return false;
 };

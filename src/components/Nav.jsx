@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { getTopics } from '../utils/api';
-i
 
 const Nav = () => {
   const [topics, setTopics] = useState([]);
@@ -14,7 +13,11 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="Nav">
+    <nav className="nav-bar">
+      <Link key={'all'} to={`/articles`}>
+        all
+      </Link>
+
       {topics.map((topic) => {
         return (
           <main>
@@ -25,7 +28,6 @@ const Nav = () => {
             >
               {topic.slug}
             </Link>
-            
           </main>
         );
       })}
