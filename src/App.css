@@ -1,6 +1,5 @@
 * {
   list-style-type: none;
-  background-color: #f8f8ff;
 }
 
 .App {
@@ -17,38 +16,67 @@
 .nav-bar {
   display: flex;
   flex-direction: row;
-  width: 50%;
+  width: 100%;
   height: 100%;
   list-style-type: none;
-  /* margin: 5px 15px 0 15px; */
-  margin: auto;
-  padding: 0 0 5px 0;
+  padding: 5px 5px 5px 5px;
+  background-color: rgba(201, 216, 218, 0.911);
+  margin-bottom: 5px;
+  background-color: rgb(8, 4, 70);
+  overflow: hidden;
+}
+
+.nav-bar a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.nav-links {
 }
 
 .topic-links {
+  text-align: center;
   margin-left: 5px;
   font-size: medium;
 }
 
-.article-card {
-  color: rgb(10, 7, 7);
-  border: 1px solid yellow;
-  padding: 0 1rem 1rem 1rem;
-  background-color: blue;
+.header {
+  background-color: rgba(138, 219, 226, 0.911);
+  border-radius: 10px;
 }
 
-.article-container {
+.article-card {
+  color: rgb(10, 7, 7);
+
+  padding: 0 1rem 1rem 1rem;
+  background-color: rgba(171, 213, 216, 0.911);
+}
+
+.articles-container {
   text-align: center;
   padding: 0 1rem 1rem 1rem;
+  background-color: rgba(171, 213, 216, 0.911);
+  border-radius: 10px;
 }
 
 .article-body {
+  background-color: rgba(211, 235, 236, 0.911);
+  border-radius: 10px;
+  padding: 1rem 1rem 1rem 1rem;
 }
 
-.article-links {
+.article-list {
   font-size: medium;
+  padding: 0 1rem 1rem 1rem;
+  background-color: rgba(171, 213, 216, 0.911);
+}
 
-  padding: 0 5px 0 5px;
+.topic-title {
+  background-color: rgba(171, 213, 216, 0.911);
 }
 
 .bold {
@@ -61,6 +89,21 @@
 
 .comment-body {
   padding-bottom: 1rem;
+  background-color: rgba(211, 235, 236, 0.911);
+  border-radius: 10px;
+  padding: 1rem 1rem 1rem 1rem;
+}
+
+ul {
+  padding-left: 0;
+}
+
+.created-at {
+  font-size: small;
+}
+
+.add-comment-form {
+  padding-top: 1rem;
 }
 
 /* ----------------------------------------------- */
@@ -98,8 +141,4 @@
   .article-container {
     text-align: center;
   }
-}
-
-ul {
-  padding-left: 0;
 }

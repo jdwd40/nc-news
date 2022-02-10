@@ -41,3 +41,10 @@ export const getCommentsById = (article_id) => {
     return comments;
   });
 };
+
+export const postCommentByArticleId = (article_id) => {
+  return newsApi.post(`/articles/${article_id}/comments`).then(({ data }) => {
+    console.log(data);
+    return data;
+  });
+};

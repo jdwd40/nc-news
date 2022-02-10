@@ -29,12 +29,12 @@ const Articles = () => {
 
   return (
     <main className="articles-container">
-      <h2>{topic}</h2>
+      <h2 className="topic-title">{topic}</h2>
       <ul>
         {articles.map((article) => {
           //console.log(article);
           return (
-            <main className="article-links">
+            <main className="article-list">
               <Link
                 key={article.article_id}
                 to={`/articles/${article.article_id}`}

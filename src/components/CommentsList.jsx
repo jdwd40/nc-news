@@ -19,14 +19,18 @@ const CommentsList = (props) => {
       <ul>
         {comments.map((comment) => {
           return (
-            <div className="comment-body">
-              <li>{comment.body}</li>
-              <li>Author: {comment.author}</li>
-              <li>
-                Votes: <span className="bold">{comment.votes}</span>
-              </li>
-              <li>Created at: {comment.created_at}</li>
-            </div>
+            <>
+              <div className="comment-body">
+                <li>{comment.body}</li>
+                <br />
+                <li>Author: {comment.author}</li>
+                <li>
+                  Votes: <span className="bold">{comment.votes}</span>
+                </li>
+                <li className="created-at">Created at: {comment.created_at}</li>
+              </div>
+              <br />
+            </>
           );
         })}
       </ul>

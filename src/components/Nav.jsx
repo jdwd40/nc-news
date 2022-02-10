@@ -17,10 +17,9 @@ const Nav = () => {
       <Link key={'all'} to={`/articles`}>
         all
       </Link>
-
       {topics.map((topic) => {
         return (
-          <main>
+          <main className="nav-links">
             <Link
               className="topic-links"
               key={topic.slug}
