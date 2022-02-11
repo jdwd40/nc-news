@@ -30,6 +30,9 @@ const Nav = () => {
           </main>
         );
       })}
+      <Link key={'Sign In'} to={`/sign_in`}>
+        Sign In
+      </Link>
     </nav>
   );
 };

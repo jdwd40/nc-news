@@ -1,23 +1,27 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { getArticleById, getArticles } from '../utils/api';
-import AddCommentForm from './AddCommentForm';
+import { getArticleById, getArticles, sendVoteToArticle } from '../utils/api';
 import CommentsList from './CommentsList';
 
 const ArticleCard = () => {
   const { article_id } = useParams();
   const [article, setArticle] = useState([]);
+  const [sentVoteCount, setSentVoteCount] = useState();
+  const [votes, setVotes] = useState();
   let navigate = useNavigate();
 
   useEffect(() => {
     getArticleById(article_id).then((articleFromApi) => {
-      console.log('after getArtsbyId', articleFromApi);
       setArticle(articleFromApi);
     });
   }, []);
 
-  console.log('from article Card: ', article);
+  const handleSendVoteClick = () => {
+    setSentVoteCount((currCount) => currCount + article.votes);
+    sendVoteToArticle(article_id);
+    return currCount;
+  };
 
   return (
     <div className="article-card">
@@ -26,15 +30,13 @@ const ArticleCard = () => {
         <p className="article-body">{article.body}</p>
         <button
           onClick={() => {
-            console.log('got here inside post button onclick');
-
             navigate(`/comment/${article_id}`);
           }}
         >
           Post Comment
         </button>
         <span className="likes">Likes: {article.votes}</span>
-        <button>Up Vote</button>
+        <button onclick={handleSendVoteClick}>Up Vote</button>
       </div>
       <CommentsList article_id={article_id} />
     </div>

@@ -5,6 +5,7 @@ import Nav from './components/Nav';
 import ArticleCard from './components/ArticleCard';
 import Articles from './components/Articles';
 import AddCommentForm from './components/AddCommentForm';
+import SignInPage from './components/SignInPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             path="/comment/:article_id"
             element={<AddCommentForm />}
           ></Route>
+          <Route path="sign_in" element={<SignInPage />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

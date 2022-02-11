@@ -42,9 +42,35 @@ export const getCommentsById = (article_id) => {
   });
 };
 
-export const postCommentByArticleId = (article_id) => {
-  return newsApi.post(`/articles/${article_id}/comments`).then(({ data }) => {
-    console.log(data);
+export const postCommentByArticleId = (article_id, comment) => {
+  const postComment = {};
+  postComment.body = comment;
+  postComment.username = 'grumpy19';
+  return newsApi
+    .post(`/articles/${article_id}/comments`, postComment)
+    .then(({ data }) => {
+      console.log(data);
+      return data;
+    });
+};
+
+export const sendVoteToArticle = (article_id) => {
+  const vote = {};
+  vote.inc_votes = 1;
+  return newsApi.patch(`/articles/${article_id}`, vote).then(({ data }) => {
+    console.log('inside sendVotes :', data);
     return data;
   });
+};
+
+export const checkUserExists = (userName) => {
+  return newsApi
+    .get(`/users/${userName}`)
+    .then(({ data }) => {
+      return data.user.username;
+    })
+    .catch((err) => {
+      console.log(err.response.status);
+      return err;
+    });
 };
