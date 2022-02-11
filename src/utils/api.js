@@ -71,6 +71,9 @@ export const checkUserExists = (userName) => {
     })
     .catch((err) => {
       console.log(err.response.status);
-      return err;
+      if (err.response.status === 404) {
+        console.log('got to error handleing 404 check');
+        return Promise.resolve('User not found');
+      }
     });
 };

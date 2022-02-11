@@ -2,9 +2,13 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { getTopics } from '../utils/api';
+import { UserContext } from '../contexts/User';
+import { useContext } from 'react';
 
 const Nav = () => {
   const [topics, setTopics] = useState([]);
+  const { loggedInUser } = useContext(UserContext);
+  console.log('from nav.jsx', loggedInUser);
 
   useEffect(() => {
     getTopics().then((topicsFromApi) => {
@@ -30,6 +34,7 @@ const Nav = () => {
           </main>
         );
       })}
+      <span className="user-text">User: {loggedInUser}</span>
       <Link key={'Sign In'} to={`/sign_in`}>
         Sign In
       </Link>

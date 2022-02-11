@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { checkUserExists } from '../utils/api';
+import { UserContext } from '../contexts/User';
+import { useContext } from 'react';
 
 const SignInPage = () => {
   const [userName, setUserName] = useState('');
-  const [loggedInUser, setLoggedInUser] = useState('');
+  const { loggedInUser, setLoggedInUser } = useContext(UserContext);
 
   const handleChange = (e) => {
     setUserName((currName) => {
@@ -23,6 +25,7 @@ const SignInPage = () => {
 
   return (
     <div>
+      <h4>{loggedInUser}</h4>
       <h3>Sign in to NC News</h3>
       <form onSubmit={handleSubmit}>
         <label>User Name</label>
