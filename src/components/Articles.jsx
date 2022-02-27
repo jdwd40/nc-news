@@ -3,6 +3,15 @@ import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getArticlesByTopic, getArticles } from '../utils/api';
 import { useLocation } from 'react-router-dom';
+import {
+  Button,
+  Heading,
+  Text,
+  Box,
+  Stack,
+  VStack,
+  StackDivider,
+} from '@chakra-ui/react';
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
@@ -17,7 +26,8 @@ const Articles = () => {
     if (topic === null || topic === 'All Items') {
       getArticles().then((articlesFromApi) => {
         setArticles(articlesFromApi);
-        console.log('got here');
+        topic="All Items";
+        console.log('got here', topic);
       });
     } else {
       getArticlesByTopic(topic).then((selectedArticlesFromApi) => {
@@ -27,25 +37,52 @@ const Articles = () => {
   }, [topic]);
   //console.log(articles);
 
+  const topicDisplay = () => {
+    console.log('from topicDisplay ', topic);
+    if (topic === null){
+      topic="All Items";
+    } else {
+      topic = topic.charAt(0).toUpperCase() + topic.slice(1);
+    }
+    return (
+      <>
+      {topic}
+      </>
+    )
+  }
+
   return (
-    <main className="articles-container">
-      <h2 className="topic-title">{topic}</h2>
-      <ul>
-        {articles.map((article) => {
-          //console.log(article);
-          return (
-            <main className="article-list">
-              <Link
-                key={article.article_id}
-                to={`/articles/${article.article_id}`}
-              >
-                <li>{article.title}</li>
-              </Link>
-            </main>
-          );
-        })}
-      </ul>
-    </main>
+    <Box bg="gray.200" color="teal.700" p="1" border-radius="lg">
+      <main>
+        <Heading bgGradient="linear(to-l, green.300, blue.600)" bgClip="text"
+        fontSize="3xl"
+        fontWeight="bold"
+        pb="1"
+        >
+          {topicDisplay()}
+        </Heading>
+        <ul>
+          {articles.map((article) => {
+            return (
+              <main>
+                <VStack bg="gray.100"
+                >
+                  <Link
+                    key={article.article_id}
+                    to={`/articles/${article.article_id}`}
+                  >
+                    <Text as="i">
+                      <li>{article.title}</li>
+                      <hr></hr>
+                    </Text>
+                  </Link>
+                </VStack>
+              </main>
+            );
+          })}
+        </ul>
+      </main>
+    </Box>
   );
 };
 

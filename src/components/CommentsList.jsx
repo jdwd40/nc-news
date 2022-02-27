@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { getCommentsById } from '../utils/api';
+import {
+  Button,
+  Heading,
+  Text,
+  Box,
+  Stack,
+  HStack,
+  Center,
+} from '@chakra-ui/react';
 
 const CommentsList = (props) => {
   const [comments, setComments] = useState([]);
@@ -12,7 +21,8 @@ const CommentsList = (props) => {
   }, []);
 
   return (
-    <div className="comments-list">
+    <Box shadow="md" bg="gray.300">
+    <div>
       <p>
         Comments <span className="bold">{comments.length}</span>
       </p>
@@ -20,21 +30,24 @@ const CommentsList = (props) => {
         {comments.map((comment) => {
           return (
             <>
-              <div className="comment-body">
+              <div>
+              <Box shadow="md" bg="gray.400" borderRadius="lg" m="5">
                 <li>{comment.body}</li>
-                <br />
+        
                 <li>Author: {comment.author}</li>
                 <li>
                   Votes: <span className="bold">{comment.votes}</span>
                 </li>
                 <li className="created-at">Created at: {comment.created_at}</li>
+                </Box>
               </div>
-              <br />
+         
             </>
           );
         })}
       </ul>
     </div>
+    </Box>
   );
 };
 

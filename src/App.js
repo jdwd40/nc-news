@@ -8,10 +8,12 @@ import AddCommentForm from './components/AddCommentForm';
 import SignInPage from './components/SignInPage';
 import { UserContext } from './contexts/User';
 import { useState } from 'react';
+import { ChakraProvider } from '@chakra-ui/react'
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState('test user');
   return (
+    <ChakraProvider>
     <BrowserRouter>
       <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
         <div className="App">
@@ -34,6 +36,7 @@ function App() {
         </div>
       </UserContext.Provider>
     </BrowserRouter>
+    </ChakraProvider>
   );
 }
 

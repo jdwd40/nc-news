@@ -4,6 +4,15 @@ import React from 'react';
 import { getTopics } from '../utils/api';
 import { UserContext } from '../contexts/User';
 import { useContext } from 'react';
+import {
+  Button,
+  Heading,
+  Text,
+  Box,
+  Stack,
+  HStack,
+  Center,
+} from '@chakra-ui/react';
 
 const Nav = () => {
   const [topics, setTopics] = useState([]);
@@ -17,28 +26,49 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="nav-bar">
-      <Link key={'all'} to={`/articles`}>
-        all
-      </Link>
-      {topics.map((topic) => {
-        return (
-          <main className="nav-links">
-            <Link
-              className="topic-links"
-              key={topic.slug}
-              to={`/articles/?topic=${topic.slug}`}
+    <Box
+    borderWidth="2px"
+    bg="gray.300"
+    alignItems="center"
+    textAlign="center"
+    width="100%"
+    >
+        <Center>
+        <nav>
+          <HStack spacing={4} pt="3" borderRadius="lg">
+            <Button
+              colorScheme='teal' 
+              variant='outline'
             >
-              {topic.slug}
-            </Link>
-          </main>
-        );
-      })}
-      <span className="user-text">User: {loggedInUser}</span>
-      <Link key={'Sign In'} to={`/sign_in`}>
-        Sign In
-      </Link>
-    </nav>
+              <Link key={'all'} to={`/articles`}>
+                all
+              </Link>
+            </Button>
+            {topics.map((topic) => {
+              return (
+                <main>
+                  <Button
+                  colorScheme='teal' 
+                  variant='outline'
+                  >
+                    <Link
+                      key={topic.slug}
+                      to={`/articles/?topic=${topic.slug}`}
+                    >
+                      {topic.slug}
+                    </Link>
+                  </Button>
+                </main>
+              );
+            })}
+          </HStack>
+          <span className="user-text">User: {loggedInUser}</span>
+          <Link key={'Sign In'} to={`/sign_in`}>
+            Sign In
+          </Link>
+        </nav>
+    </Center>
+      </Box>
   );
 };
 
