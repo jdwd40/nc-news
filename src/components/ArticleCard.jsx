@@ -1,79 +1,61 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { getArticleById, getArticles, sendVoteToArticle } from '../utils/api';
-import CommentsList from './CommentsList';
+//import Image from 'next/image';
 import {
-  Button,
+  Box,
+  Center,
   Heading,
   Text,
-  Box,
   Stack,
-  VStack,
-  StackDivider,
-  Container,
-  Center
+  Avatar,
+  Image
 } from '@chakra-ui/react';
 
-const ArticleCard = () => {
-  const { article_id } = useParams();
-  const [article, setArticle] = useState([]);
-  const [sentVoteCount, setSentVoteCount] = useState();
-  const [votes, setVotes] = useState();
-  let navigate = useNavigate();
-
-  useEffect(() => {
-    getArticleById(article_id).then((articleFromApi) => {
-      setArticle(articleFromApi);
-    });
-  }, []);
-
-  const handleSendVoteClick = () => {
-    // setSentVoteCount((currCount) => currCount + article.votes);
-    // sendVoteToArticle(article_id);
-    // return currCount;
-  };
-
+export default function ArticleCard(props) {
   return (
-    <Box bg="gray.200">
-      <div>
-        <Container
-          maxW="lg"
-          mx="auto"
-          bg="#0B3C5D"
-          color="white"
-          borderRadius="10"
-        >
-          <Heading color="#D9B310" fontSize="3xl" fontWeight="bold">
-            {article.title}
+    <Center py={6}>
+      <Box
+        maxW={'445px'}
+        w={'full'}
+        bg={'white'}
+        boxShadow={'2xl'}
+        rounded={'md'}
+        p={6}
+        overflow={'hidden'}>
+        <Box
+          h={'210px'}
+          bg={'gray.100'}
+          mt={-6}
+          mx={-6}
+          mb={6}
+          pos={'relative'}>
+          <Image
+          objectFit='cover'
+            src={
+                'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80'
+            }
+            layout={'fill'}
+          />
+        </Box>
+        <Stack>
+          <Text
+            color={'green.500'}
+            textTransform={'uppercase'}
+            fontWeight={800}
+            fontSize={'sm'}
+            letterSpacing={1.1}>
+            Blog
+          </Text>
+          <Heading
+            color={'white'}
+            fontSize={'2xl'}
+            fontFamily={'body'}>
+            Boost your conversion rate
           </Heading>
-          <Box shadow="md" p="2" m="2">
-            <p>{article.body}</p>
-          </Box>
-        </Container>
-        <Center>
-          <VStack bg="#1D2731" width="lg" color="#fff">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => {
-                navigate(`/comment/${article_id}`);
-              }}
-            >
-              Post Comment
-            </Button>
-            <Box>
-              <span className="likes">Likes: {article.votes}</span>
-              <Button size="sm" onClick={handleSendVoteClick}>
-                Up Vote
-              </Button>
-            </Box>
-          </VStack>
-        </Center>
-      </div>
-      <CommentsList article_id={article_id} />
-    </Box>
+          <Text color={'gray.500'} pt={6} noOfLines={5}>
+           {props.text}
+          </Text>
+        </Stack>
+   
+      </Box>
+    </Center>
   );
-};
-
-export default ArticleCard;
+}

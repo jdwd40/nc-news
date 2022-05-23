@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Flex,
@@ -40,6 +41,12 @@ const NavLink = ({ children }: { children: ReactNode }) => {
 export default function Simple() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `/sign_in`; 
+    navigate(path);
+  }
+
   return (
     <>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
@@ -52,7 +59,7 @@ export default function Simple() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            <Box>Logo</Box>
+          
             <HStack
               as={'nav'}
               spacing={4}
@@ -80,10 +87,9 @@ export default function Simple() {
                 />
               </MenuButton>
               <MenuList>
-                <MenuItem>Sign In</MenuItem>
-                <MenuItem>Sign Out</MenuItem>
+                <MenuItem onClick={routeChange}>Sign In</MenuItem>
+               
                 <MenuDivider />
-                <MenuItem>Sign Out</MenuItem>
               </MenuList>
             </Menu>
           </Flex>

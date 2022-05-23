@@ -7,6 +7,7 @@ import ArticleList from './components/ArticleList';
 import AddCommentForm from './components/AddCommentForm';
 import SignInPage from './components/SignInPage';
 import SignIn from './components/SignIn';
+import DisplayArticle from './components/DisplayArticle';
 import { UserContext } from './contexts/User';
 import { useState } from 'react';
 import { ChakraProvider } from '@chakra-ui/react'
@@ -25,14 +26,14 @@ function App() {
             <Route path="/articles" element={<ArticleList />}></Route>
             <Route
               path="/articles/:article_id"
-              element={<ArticleCard />}
+              element={<DisplayArticle />}
             ></Route>
             <Route path="/articles/*" element={<ArticleList />}></Route>
             <Route
               path="/comment/:article_id"
               element={<AddCommentForm />}
             ></Route>
-            <Route path="sign_in" element={<SignIn />}></Route>
+            <Route path="/sign_in" element={<SignIn />}></Route>
           </Routes>
         </div>
       </UserContext.Provider>
