@@ -36,21 +36,22 @@ const AddCommentForm = () => {
   };
 
   return (
-    <Box bg="gray.200" color="teal.700">
-      <VStack direction="column" spacing="3">
-        <FormControl color="teal.700">
+    <Center>
+    <Box bg='#999999' color="#003333" maxW="lg">
+      {/* <VStack direction="column" spacing="1"> */}
+        <FormControl>
           <form onSubmit={handleSubmit}>
             <Text as="i">Signed in as: grumpy19</Text>
             <Heading
-              bgGradient="linear(to-l, green.500, blue.600)"
-              bgClip="text"
+              color="#003333"
               fontSize="2xl"
               fontWeight="extrabold"
             >
               Add a new comment
             </Heading>
-            <Box color="teal.700" bg="gray.100">
+            <Box color="#003333" bg="#669999" maxW="md">
               <textarea
+              bg="#669999"
                 rows="4"
                 cols="30"
                 type="textarea"
@@ -63,8 +64,9 @@ const AddCommentForm = () => {
             </Button>
           </form>
         </FormControl>
-      </VStack>
+      {/* </VStack> */}
     </Box>
+    </Center>
   );
 };
 

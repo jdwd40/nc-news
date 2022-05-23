@@ -11,6 +11,7 @@ import {
   Stack,
   VStack,
   StackDivider,
+  Center
 } from '@chakra-ui/react';
 
 const Articles = () => {
@@ -18,16 +19,11 @@ const Articles = () => {
   const search = useLocation().search;
   let topic = new URLSearchParams(search).get('topic');
 
-  console.log(topic);
-
   useEffect(() => {
-    // if topic is not set thtn
-
-    if (topic === null || topic === 'All Items') {
+    if (topic === 'All' || topic === 'All Items') {
       getArticles().then((articlesFromApi) => {
         setArticles(articlesFromApi);
         topic="All Items";
-        console.log('got here', topic);
       });
     } else {
       getArticlesByTopic(topic).then((selectedArticlesFromApi) => {
@@ -52,12 +48,13 @@ const Articles = () => {
   }
 
   return (
-    <Box bg="gray.200" color="teal.700" p="1" border-radius="lg">
+    <Center>
+    <Box bg="#999999" color="#003333" p="1" border-radius="lg" maxW="lg">
       <main>
-        <Heading bgGradient="linear(to-l, green.300, blue.600)" bgClip="text"
+        <Heading color="#003333"
         fontSize="3xl"
         fontWeight="bold"
-        pb="1"
+        pb="3"
         >
           {topicDisplay()}
         </Heading>
@@ -65,15 +62,15 @@ const Articles = () => {
           {articles.map((article) => {
             return (
               <main>
-                <VStack bg="gray.100"
+                <VStack
                 >
                   <Link
                     key={article.article_id}
                     to={`/articles/${article.article_id}`}
                   >
-                    <Text as="i">
+                    <Text pb="1">
                       <li>{article.title}</li>
-                      <hr></hr>
+                
                     </Text>
                   </Link>
                 </VStack>
@@ -83,6 +80,7 @@ const Articles = () => {
         </ul>
       </main>
     </Box>
+    </Center>
   );
 };
 

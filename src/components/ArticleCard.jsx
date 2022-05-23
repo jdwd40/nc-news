@@ -11,6 +11,8 @@ import {
   Stack,
   VStack,
   StackDivider,
+  Container,
+  Center
 } from '@chakra-ui/react';
 
 const ArticleCard = () => {
@@ -35,33 +37,39 @@ const ArticleCard = () => {
   return (
     <Box bg="gray.200">
       <div>
-        <Heading
-          bgGradient="linear(to-l, green.500, blue.600)"
-          bgClip="text"
-          fontSize="2xl"
-          fontWeight="bold"
+        <Container
+          maxW="lg"
+          mx="auto"
+          bg="#0B3C5D"
+          color="white"
+          borderRadius="10"
         >
-          {article.title}
-        </Heading>
-        <Box shadow="md" p="2" m="2">
-          <p>{article.body}</p>
-        </Box>
-        <VStack>
-          <Button
-            colorScheme="teal"
-            variant="outline"
-            size="sm"
-            onClick={() => {
-              navigate(`/comment/${article_id}`);
-            }}
-          >
-            Post Comment
-          </Button>
-          <Box>
-          <span className="likes">Likes: {article.votes}</span>
-          <Button size="sm" onClick={handleSendVoteClick}>Up Vote</Button>
+          <Heading color="#D9B310" fontSize="3xl" fontWeight="bold">
+            {article.title}
+          </Heading>
+          <Box shadow="md" p="2" m="2">
+            <p>{article.body}</p>
           </Box>
-        </VStack>
+        </Container>
+        <Center>
+          <VStack bg="#1D2731" width="lg" color="#fff">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => {
+                navigate(`/comment/${article_id}`);
+              }}
+            >
+              Post Comment
+            </Button>
+            <Box>
+              <span className="likes">Likes: {article.votes}</span>
+              <Button size="sm" onClick={handleSendVoteClick}>
+                Up Vote
+              </Button>
+            </Box>
+          </VStack>
+        </Center>
       </div>
       <CommentsList article_id={article_id} />
     </Box>

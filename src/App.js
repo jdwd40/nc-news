@@ -3,9 +3,10 @@ import './App.css';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import ArticleCard from './components/ArticleCard';
-import Articles from './components/Articles';
+import ArticleList from './components/ArticleList';
 import AddCommentForm from './components/AddCommentForm';
 import SignInPage from './components/SignInPage';
+import SignIn from './components/SignIn';
 import { UserContext } from './contexts/User';
 import { useState } from 'react';
 import { ChakraProvider } from '@chakra-ui/react'
@@ -20,18 +21,18 @@ function App() {
           <Header />
           <Nav />
           <Routes>
-            <Route path="/" element={<Articles />}></Route>
-            <Route path="/articles" element={<Articles />}></Route>
+            <Route path="/" element={<ArticleList />}></Route>
+            <Route path="/articles" element={<ArticleList />}></Route>
             <Route
               path="/articles/:article_id"
               element={<ArticleCard />}
             ></Route>
-            <Route path="/articles/*" element={<Articles />}></Route>
+            <Route path="/articles/*" element={<ArticleList />}></Route>
             <Route
               path="/comment/:article_id"
               element={<AddCommentForm />}
             ></Route>
-            <Route path="sign_in" element={<SignInPage />}></Route>
+            <Route path="sign_in" element={<SignIn />}></Route>
           </Routes>
         </div>
       </UserContext.Provider>

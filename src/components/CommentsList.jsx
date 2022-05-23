@@ -21,7 +21,8 @@ const CommentsList = (props) => {
   }, []);
 
   return (
-    <Box shadow="md" bg="gray.300">
+    <Center>
+    <Box shadow="md" bg="#0B3c5D" color="#fff" maxW ="lg">
     <div>
       <p>
         Comments <span className="bold">{comments.length}</span>
@@ -31,7 +32,7 @@ const CommentsList = (props) => {
           return (
             <>
               <div>
-              <Box shadow="md" bg="gray.400" borderRadius="lg" m="5">
+              <Box shadow="md" bg="#328CC1" borderRadius="lg" m="5">
                 <li>{comment.body}</li>
         
                 <li>Author: {comment.author}</li>
@@ -48,6 +49,7 @@ const CommentsList = (props) => {
       </ul>
     </div>
     </Box>
+    </Center>
   );
 };
 
