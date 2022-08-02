@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import Nav from './components/Nav';
@@ -21,6 +21,7 @@ function App() {
         <div className="App">
           <Header />
           <Nav />
+         
           <Routes>
             <Route path="/" element={<ArticleList />}></Route>
             <Route path="/articles" element={<ArticleList />}></Route>

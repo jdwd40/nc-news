@@ -47,7 +47,7 @@ const DisplayArticle = () => {
               rounded="md"
               objectFit="cover"
               src={
-                'https://random.imagecdn.app/500/250'
+                'https://random.imagecdn.app/500/250?search=coding'
               }
               layout={'fill'}
             />

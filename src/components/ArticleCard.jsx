@@ -30,20 +30,12 @@ export default function ArticleCard(props) {
           <Image
           objectFit='cover'
             src={
-                'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80'
+                'https://random.imagecdn.app/500/250'
             }
             layout={'fill'}
           />
         </Box>
         <Stack>
-          <Text
-            color={'green.500'}
-            textTransform={'uppercase'}
-            fontWeight={800}
-            fontSize={'sm'}
-            letterSpacing={1.1}>
-            Blog
-          </Text>
           <Heading
             color={'white'}
             fontSize={'2xl'}

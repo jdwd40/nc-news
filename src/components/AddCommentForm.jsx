@@ -28,7 +28,6 @@ const AddCommentForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('post comment here', comment);
     postCommentByArticleId(article_id, comment).then(() => {
       setComment('');
       navigate(`/articles/${article_id}`);

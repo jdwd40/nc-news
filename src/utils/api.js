@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const newsApi = axios.create({
- baseURL: 'https://nc-news-ex1.herokuapp.com/api/',
- //baseURL: 'localhost:9090/api/',
+//  baseURL: 'https://nc-news-ex1.herokuapp.com/api/',
+ baseURL: 'http://localhost:9090/api',
 });
 
 export const getTopics = () => {
@@ -73,7 +73,6 @@ export const checkUserExists = (userName) => {
     .catch((err) => {
       console.log(err.response.status);
       if (err.response.status === 404) {
-        console.log('got to error handleing 404 check');
         return Promise.resolve('User not found');
       }
     });

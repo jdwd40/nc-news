@@ -88,7 +88,6 @@ export default function Simple() {
               </MenuButton>
               <MenuList>
                 <MenuItem onClick={routeChange}>Sign In</MenuItem>
-               
                 <MenuDivider />
               </MenuList>
             </Menu>
