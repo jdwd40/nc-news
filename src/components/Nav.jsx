@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Flex,
@@ -16,6 +16,7 @@ import {
   useDisclosure,
   useColorModeValue,
   Stack,
+  Center,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 
@@ -23,29 +24,31 @@ const Links = ['All', 'Coding', 'Cooking', 'Football'];
 
 const NavLink = ({ children }: { children: ReactNode }) => {
   return (
-    <Link
-      px={2}
-      py={1}
-      rounded={'md'}
-      _hover={{
-        textDecoration: 'none',
-        bg: useColorModeValue('gray.200', 'gray.700'),
-      }}
-      href={`/articles/?topic=${children}`}
-    >
-      {children}
-    </Link>
+    <Center w='100%'>
+      <Link
+        px={2}
+        py={1}
+        rounded={'md'}
+        _hover={{
+          textDecoration: 'none',
+          bg: useColorModeValue('gray.200', 'gray.700'),
+        }}
+        href={`/articles/?topic=${children}`}
+      >
+        {children}
+      </Link>
+    </Center>
   );
 };
 
 export default function Simple() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  let navigate = useNavigate(); 
-  const routeChange = () =>{ 
-    let path = `/sign_in`; 
+  let navigate = useNavigate();
+  const routeChange = () => {
+    let path = `/sign_in`;
     navigate(path);
-  }
+  };
 
   return (
     <>
@@ -59,7 +62,6 @@ export default function Simple() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-          
             <HStack
               as={'nav'}
               spacing={4}

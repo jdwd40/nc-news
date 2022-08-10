@@ -54,7 +54,7 @@ const DisplayArticle = () => {
           </Box>
           <Box shadow="md" p="2" m="2">
             <Text
-            fontSize="lg"
+            fontSize='md'
             >{article.body}</Text>
           </Box>
         </Container>

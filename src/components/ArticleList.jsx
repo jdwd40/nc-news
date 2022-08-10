@@ -20,6 +20,7 @@ import {
   VStack,
   UnorderedList,
   ListItem,
+  Flex,
 } from '@chakra-ui/react';
 
 const ArticleList = () => {
@@ -44,11 +45,10 @@ const ArticleList = () => {
 
   return (
     <Box
-      display="flex"
-      flex="1"
-      flexDirection="column"
-      justifyContent="center"
-      marginTop={{ base: '3', sm: '0' }}
+      // display="flex"
+      // flex="1"
+      // justifyContent="center"
+      // marginTop={{ base: '3', sm: '0' }}
     >
       <Text marginTop="1" size="md">
         {articles.map((article) => {
@@ -60,7 +60,7 @@ const ArticleList = () => {
                 textDecoration="none"
                 _hover={{ textDecoration: 'none' }}
               >
-                <Heading pb="1" size="lg">
+                <Heading pb="1" size="xl">
                   <ListItem>{article.title}</ListItem>
                 </Heading>
                 <ListItem>
